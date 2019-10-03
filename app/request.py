@@ -18,12 +18,12 @@ def configure_request(app):
 
 
 
-# def getQuotes():
-#    random_quote = request.get(base_url)
-#    new_quote = random_quote.json()
-#    id = new_quote.get("id")
-#    author = new_quote.get("author")
-#    permalink = new_quote.get("permalink")
-#    quote = new_quote.get("quote")
-#    quote_object = Quotes(id,author,quote,permalink)
-#    return quote_object
+def getQuotes():
+   random_quote = request.get(base_url)
+   new_quote = random_quote.json()
+   id = new_quote.get("id")
+   author = new_quote.get("author")
+   permalink = new_quote.get("permalink")
+   quote = new_quote.get("quote")
+   quote_object = Quotes(id,author,quote,permalink)
+   return quote_object
