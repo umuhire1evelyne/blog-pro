@@ -1,7 +1,7 @@
 
 import urllib.request,json
 from .models import Quotes
-import requests
+from . import request
 from config import Config
 
 
@@ -19,7 +19,7 @@ def configure_request(app):
 
 
 def getQuotes():
-   random_quote = requests.get(base_url)
+   random_quote = request.get(base_url)
    new_quote = random_quote.json()
    id = new_quote.get("id")
    author = new_quote.get("author")
