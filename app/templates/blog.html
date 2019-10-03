@@ -1,53 +1,64 @@
-
-{% extends 'base.html'%}
-{% import 'macros.html' as macro%}
-
-
-<!-- Styles block -->
-
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/movie.css')}}">
-{% endblock %}
-
-<!-- Content block -->
-{% block content %}
-<div class="container">
-
-    <!-- Poster background -->
+{%extends 'base.html'%}
+{%block content%}
+<div class="container mt-5">
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{movie.poster}}) no-repeat center center">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+                <div class="card">
+
+                        <h5 class="card-header pink darken-4 white-text text-center py-4">
+                            <strong>Create a Post</strong>
+                        </h5>
+                        {% if error %}
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                        {%endif%}
+                    
+                    
+                        <!--Card content-->
+                        <div class="card-body px-lg-5 pt-0">
+                    
+                            <!-- Form -->
+                            <form class="text-center" style="color: #757575;" action='/write_post/new' method='POST'>
+                    
+                                <!-- Name -->
+                                <div class="md-form mt-3">
+                                    <input type="text" id="materialContactFormName" class="form-control" name = "title">
+                                    <label for="materialContactFormName" >Title</label>
+                                </div>
+                    
+                                
+                                <!-- <span>Category</span>
+                                <select class="mdb-select">
+                                    <option value="" disabled>Choose option</option>
+                                    <option value="All things life" selected name = 'options'>All things life</option>
+                                    <option value="Tech" name= 'options'>Tech</option>
+                                
+                                </select>
+                             -->
+                             <div class="md-form mt-3">
+                                <input type="text" id="materialContactFormName" class="form-control" name = "category">
+                                <label for="materialContactFormName" >Category</label>
+                            </div>
+            
+                                <div class="md-form">
+                                    <textarea id="materialContactFormMessage" class="form-control md-textarea" rows="5" name ="content" placeholder="write post ..."></textarea>
+                                   
+                                </div>
+                
+                                <button class="btn  btn-rounded btn-block z-depth-0 my-4 waves-effect pink darken-4" type="submit">Post</button>
+                    
+                            </form>
+                            <!-- Form -->
+                    
+                        </div>
+                    
+                    </div>    
+                
         </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
-            <h3>{{ movie.title }}</h3>
-
-            <p class="overview"> {{ movie.overview }}</p>
-
-            <p class="ratings"> <b> {{ movie.vote_average }}</b> - <i>{{ movie.vote_count}} votes </i> </p>
-            <a class="ratings" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
-
-
-        </div>
-
-
+        <div class="col-md-3"></div>
     </div>
-
-    <div class="row">
-
-        <h1>Reviews</h1>
-        <hr>
-
-        {% if reviews %}
-            <h5>This movie has {{reviews | count}}  <a href="{{url_for('main.movie_reviews',id=movie.id)}}">reviews</a></h5>
-
-        {% else%}
-            <h3 class="text-center">This movie has no reviews </h3>
-
-            <a class="btn btn-success btn-lg text-center" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
-        {% endif %}
-
-    </div>
-
 </div>
-{% endblock %}
+    
+{%endblock%}

@@ -1,0 +1,26 @@
+
+{% extends 'base.html'%}
+
+
+{% block content %}
+  <div class="container">
+
+      <ul>
+
+          {% if comments %}
+          {% for comment in comments %}
+                  <div class="row text-center">
+                                  <p style="color: rgb(43, 226, 226); font-size: 24px;">{{ comment.description }}</p>
+                                  
+                  </div>
+          {% endfor %}
+          {% else %}
+
+          <h3>No Comments Yet! !</h3>
+          {%endif%}
+
+</ul>
+}
+
+  </div>
+{% endblock %}

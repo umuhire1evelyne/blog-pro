@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+                <form class="border border-light p-5">
+
+                        <div class="text-center">
+                            <p class="h4 mb-4">Subscribe</p>
+                            {% if error %}
+                            <div class="alert alert-danger">
+                                {{error}}
+                            </div>
+                            {%endif%}
+                    
+                            <p>Join our mailing list. We write ronly the best content.</p>
+                    
+                            <p>
+                                <a href="" target="_blank">Get updates on new blog posts</a>
+                            </p>
+                        </div>
+                    
+                        <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Name">
+                    
+                        <input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    
+                        <button class="btn btn-info btn-block pink darken-4" type="submit">Subscribe</button>
+                    </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+{%endblock%}

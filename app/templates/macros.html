@@ -1,35 +1,41 @@
-<!-- Displaying movie list macro  -->
-{% macro displayMovieList(movie_list) %}
+{% macro display(posts) %}
+<div class="row">
+	{% if posts %}
+		{% for posts in post %}
 
-    {% for movie in movie_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">
-                    {{ movie.title|truncate(10)}}</a>
-            </li>
-        </div>
+				
+			 <a href="{{url_for('main.new_comment',post_id = posts.id)}}" class="btn btn-info">Comment <span>{{posts.comments.count()}}</span></a>
+				
 
-    {% endfor %}
+			</div>
+		</div>
 
-{% endmacro %}
+		</div>
+		{% endfor %}
+	{% else %}
+	{% endif %}
+</div>
+{% endmacro %} 
 
 
-<!-- Displaying reviews macro  -->
-{% macro displayReviews(review_list) %}
 
-    {% for review in review_list %}
+{% macro displayComment(comments) %}
+<ul>
 
-    <div class="row">
+			{% if comments %}
+			{% for comment in comments %}
+				<div class="row text-center">
+						<p style="color: rgb(43, 226, 226); font-size: 24px;">{{ comment.content }}</p>
+						<small>Posted by : {{comment.name}}</small>
+						
+				</div>
+			{% endfor %}
+			{% else %}
 
-      <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
-        <h4>Author</h4>
-        <p>{{review.user.username}}</p>
-      </div>
-      <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-        <h2> <a href="{{url_for('main.single_review',id=review.id)}}">{{review.movie_title}}</a> </h2>
-      </div>
-    </div>
+			<h3>No Comments Yet! !</h3>
+			{%endif%}
 
-    {% endfor %}
+	</ul>
+	
+			
 {% endmacro %}

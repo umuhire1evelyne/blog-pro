@@ -1,6 +1,5 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
-
+{% import 'macros.html' as macro %}
 <!-- Styles block -->
 
 {% block styles%}
@@ -8,51 +7,51 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 <!-- Content block -->
+<header style="padding: 10px;">
 {% block content %}
 
-<div class="container">
+<div class="container" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHN4DzuGeSja93Bfxi1LUh3hUzrqeSUjKRrSJzU2HTulxODJ92OA');background-position: 100%;width:100%;height:100%">
 
   {% if current_user.is_authenticated%}
     <h1>Hello {{current_user.username}}</h1>
   {% else %}
-    <h1>Hello stranger</h1>
+    <h1 class="text-center">Hello stranger <br>Welcome to Blog</h1>
   {%endif%}
-    <form>
-        <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
-    </form>
+    
+</header>
+<div class= "row">
+    <div class="card" >
+
+    <div  style="text-align: center" class="container-fluid">
+    <h3> Quote: </h3>
+            <div  class="card-body">
+              <strong><p>{{ quotes.quote }}</p></strong>
+              <small>{{ quotes.author }}</small>
+            </div>
+
 
 </div>
-
-<div class="container">
-
-    <!-- Popular movie -->
-    <div class="row">
-        <h3> Popular Movies</h3>
-        <ul>
-            {{ macro.displayMovieList(popular)}}
-        </ul>
-    </div>
-    <!-- Upcoming movie  -->
-    <div class="row">
-
-        <h3> Upcoming Movies </h3>
-        <ul>
-            {{ macro.displayMovieList(upcoming)}}
-        </ul>
-    </div>
-
-    <!-- Now showing movie -->
-    <div class="row">
-
-        <h3>Now Showing</h3>
-        <ul>
-            {{ macro.displayMovieList(now_showing)}}
-        </ul>
-    </div>
-
+<br>
+<br>
+<div class="text-center">
+  <div class="card">
+    <h2 class="text-center" style="font-family: Great Vibes;font-size: 40px;">Post Your Blog</h2>
+      <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-size: 20px;">Welcome to Blog site where you can post your blog and users might <br>
+                see it on the site and comment on it and the author can  edit or update <br>
+                      the blog and the author can delete the post from the page or delete a comment<br>
+                             that you find insulting or degrading. Only the author can delete and edit the post and comments<br>
+                                  from his or her profile and users can only comment on the blog
+          
+           
+      </p>
+  </div>
 </div>
-
-
-
+    </div>
+</div>
+</div>
+<footer style="background-color: black; padding: 42px;">
+  <p class="text-center" style="text-decoration-color: white;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Copyright@Evelyne umuhire</p>
+</footer>
 {% endblock%}
+
+   
