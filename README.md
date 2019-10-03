@@ -28,4 +28,5 @@ In case you have any issue using this code please do not hesitate to get in touc
 * Phone: 0780313525
 
 ## License
-MIT License Copyright (c) 2019 Evelyne UMUHIRE
+MIT License 
+Copyright (c) 2019 Evelyne UMUHIRE
