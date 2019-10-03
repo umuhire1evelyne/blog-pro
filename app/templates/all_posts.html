@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!-- <div class="row"> -->
+<div class="container">
+ <button class="btn btn-outline-primary" class="text-center">
+  <a style="text-align: center; color: rgb(124, 0, 72);"class="navbar-brand" href="/posts/new/"> Post a Blog </a>
+</button>
+
+  {% for posts in post%}
+  <div class="row">
+  <div class="col-md-10">
+    <div class="thumbnail text-center" style="font-family: Great Vibes;font-size: 50px;">
+    <h5>{{posts.category}}</h5>
+     <h2 style="font-family: 'Times New Roman', Times, serif;font-size: 20px;">{{posts.description}}</h2>
+        <small><a style="font-family: Great Vibes;font-size: 20px;">{{posts.author}}</a></small>
+        <br>
+        <h8 style="font-size: 12px;">Posted on: {{posts.date_posted }}</h8>
+        <br>
+        <a href="{{url_for('main.new_comment',post_id = posts.id)}}" class="btn btn-info">Comment <span>{{posts.comments.count()}}</span></a>
+</div>
+  </div>
+  </div>
+</div>
+  {% endfor %}
+
+{% endblock %}
