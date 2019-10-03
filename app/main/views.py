@@ -10,10 +10,10 @@ import datetime
 import markdown2
 
 
-# Views
-@main.route('/')
-def index():
-     quotes = getQuotes()
+# # Views
+# @main.route('/')
+# def index():
+#      quotes = getQuotes()
 
 
      return render_template('index.html',quotes=quotes)
